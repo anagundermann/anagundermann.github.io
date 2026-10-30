@@ -2,33 +2,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-        content="Portafolio de proyectos matemáticos y computacionales de Ana Gundermann.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de proyectos matemáticos y computacionales de Ana Gundermann.">
+  <meta name="theme-color" content="#081e42">
+  <link rel="icon" type="image/png" href="favicon.png">
   <title>Ana Gundermann | Laboratorio matemático</title>
 
   <style>
     :root {
-      --fondo: #f7f6f2;
+      --azul-marino: #081e42;
+      --azul-petroleo: #005b76;
+      --azul-medio: #087b9b;
+      --azul-claro: #dceef3;
+      --fondo: #ffffff;
+      --fondo-suave: #f5f7f9;
+      --borde: #dce4e8;
+      --texto: #445565;
+      --titulo: #153d53;
       --blanco: #ffffff;
-      --azul: #263941;
-      --azul-oscuro: #162b38;
-      --texto: #57666b;
-      --cobre: #ad7654;
-      --borde: #e4e2dc;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       background: var(--fondo);
-      color: var(--azul);
+      color: var(--titulo);
       font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.65;
     }
@@ -38,47 +44,95 @@
       text-decoration: none;
     }
 
+    a:focus-visible {
+      outline: 3px solid var(--azul-medio);
+      outline-offset: 4px;
+    }
+
     .contenedor {
-      width: min(1120px, 90%);
-      margin: auto;
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    section[id] {
+      scroll-margin-top: 40px;
+    }
+
+    /* ENCABEZADO */
+
+    .barra-superior {
+      height: 12px;
+      background: var(--azul-marino);
     }
 
     header {
+      background: var(--blanco);
       border-bottom: 1px solid var(--borde);
     }
 
     nav {
-      min-height: 85px;
+      min-height: 94px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
     .marca {
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      color: var(--azul-petroleo);
     }
 
-    .marca span { color: var(--cobre); }
+    .marca-principal {
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: -.7px;
+    }
+
+    .marca-secundaria {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
 
     .menu {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 28px;
-      font-size: 14px;
+      gap: 0;
     }
 
-    .menu a:hover { color: var(--cobre); }
+    .menu a {
+      padding: 12px 25px;
+      border-left: 1px solid var(--borde);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--azul-petroleo);
+      transition: color .2s, background .2s;
+    }
+
+    .menu a:last-child {
+      border-right: 1px solid var(--borde);
+    }
+
+    .menu a:hover {
+      background: var(--fondo-suave);
+      color: var(--azul-medio);
+    }
+
+    /* INTRODUCCIÓN */
 
     .intro {
-      padding: 105px 0 75px;
-      max-width: 850px;
+      padding: 100px 0 90px;
+      max-width: 950px;
     }
 
     .etiqueta {
-      color: var(--cobre);
+      color: var(--azul-medio);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -86,195 +140,449 @@
     }
 
     h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(38px, 5vw, 65px);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      margin: 20px 0 26px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.16;
+      letter-spacing: -1.8px;
+      color: var(--azul-petroleo);
+      margin: 24px 0 28px;
     }
 
     .intro p {
-      max-width: 670px;
+      max-width: 720px;
+      font-size: 19px;
       color: var(--texto);
-      font-size: 18px;
+      line-height: 1.85;
     }
 
+    .linea-decorativa {
+      width: 85px;
+      height: 4px;
+      background: var(--azul-medio);
+      margin-top: 34px;
+    }
+
+    /* PROYECTO DESTACADO */
+
     .destacado {
-      background: var(--azul-oscuro);
-      color: white;
-      border-radius: 22px;
-      overflow: hidden;
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       min-height: 380px;
+      overflow: hidden;
+      background: var(--azul-petroleo);
     }
 
     .destacado-visual {
-      background:
-        radial-gradient(ellipse at 65% 40%,
-          #bc8960 0%, transparent 30%),
-        radial-gradient(ellipse at 35% 65%,
-          #397c82 0%, transparent 40%),
-        #10232f;
       display: grid;
       place-items: center;
-      padding: 35px;
+      padding: 45px;
+      background:
+        radial-gradient(
+          ellipse at 45% 50%,
+          #117c96 0%,
+          #005b76 55%,
+          #07364d 100%
+        );
     }
 
     .destacado-visual svg {
       width: 100%;
-      max-width: 350px;
+      max-width: 380px;
     }
 
     .destacado-texto {
-      padding: 55px 45px;
+      padding: 60px 55px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: var(--azul-petroleo);
+      color: var(--blanco);
+    }
+
+    .destacado .etiqueta {
+      color: #a9dbe7;
     }
 
     .destacado-texto h2 {
-      font-family: Georgia, serif;
-      font-size: 36px;
-      font-weight: 400;
+      font-size: clamp(30px, 3vw, 41px);
+      font-weight: 500;
       line-height: 1.2;
-      margin: 15px 0;
+      margin: 20px 0;
+      color: var(--blanco);
     }
 
-    .destacado-texto p { color: #bdc9ce; }
+    .destacado-texto p {
+      color: #d9edf2;
+      font-size: 16px;
+      line-height: 1.85;
+      margin-bottom: 30px;
+    }
 
-    .destacado .etiqueta { color: #ddb48d; }
+    .estado-proyecto {
+      display: inline-block;
+      align-self: flex-start;
+      border: 1px solid #a9dbe7;
+      color: #d9edf2;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* SECCIONES */
 
     .seccion {
-      padding: 90px 0;
+      padding: 100px 0;
     }
 
-    .seccion h2 {
-      font-family: Georgia, serif;
-      font-size: 34px;
-      font-weight: 400;
-      margin: 0 0 30px;
+    .seccion-encabezado {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--borde);
+      padding-bottom: 22px;
     }
+
+    .seccion h2,
+    .sobre-mi h2 {
+      color: var(--azul-petroleo);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 600;
+      letter-spacing: -.6px;
+      margin: 0;
+    }
+
+    .seccion-subtitulo {
+      margin: 10px 0 0;
+      font-size: 15px;
+      color: var(--texto);
+    }
+
+    /* TARJETAS */
 
     .rejilla {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
     }
 
     .tarjeta {
+      display: flex;
+      flex-direction: column;
       background: var(--blanco);
       border: 1px solid var(--borde);
-      border-radius: 18px;
       overflow: hidden;
       transition: transform .25s, box-shadow .25s;
     }
 
     .tarjeta:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px #26394116;
+      box-shadow: 0 14px 30px rgba(0, 48, 73, .10);
     }
 
     .imagen {
-      height: 180px;
+      height: 190px;
       display: grid;
       place-items: center;
       font-family: Georgia, serif;
-      font-size: 65px;
+      font-size: 72px;
     }
 
     .fractales {
-      background: radial-gradient(circle,
-        #d49a6b, #426b73 55%, #172e3d);
-      color: #f5dfc9;
+      background:
+        radial-gradient(
+          circle,
+          #3a9bb5,
+          #075e7a 55%,
+          #082d49
+        );
+      color: #e1f5f9;
     }
 
     .datos {
-      background: #e9efed;
-      color: #477f86;
+      background: #e5f1f5;
+      color: var(--azul-petroleo);
     }
 
     .duckdb {
-      background: #e9e6dd;
-      color: #ae8156;
+      background: #d8e9ee;
+      color: var(--azul-petroleo);
     }
 
     .contenido {
-      padding: 26px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .contenido h3 {
-      font-size: 20px;
-      margin: 0 0 8px;
+      font-size: 21px;
+      font-weight: 650;
+      color: var(--azul-petroleo);
+      margin: 0 0 12px;
     }
 
     .contenido p {
       font-size: 14px;
       color: var(--texto);
-      margin: 0 0 20px;
+      line-height: 1.8;
+      margin: 0 0 26px;
     }
 
     .categoria {
-      color: var(--cobre);
+      display: block;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid var(--borde);
+      color: var(--azul-medio);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .enlace-tarjeta {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .enlace-tarjeta:hover h3 {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* SOBRE MÍ */
+
+    .franja-suave {
+      background: var(--fondo-suave);
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
     }
 
     .sobre-mi {
-      border-top: 1px solid var(--borde);
-      padding: 60px 0 90px;
+      padding: 85px 0 95px;
+    }
+
+    .sobre-mi h2 {
+      margin-bottom: 25px;
     }
 
     .sobre-mi p {
       color: var(--texto);
-      max-width: 700px;
+      max-width: 800px;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
+    /* FOOTER INSTITUCIONAL */
+
     footer {
-      border-top: 1px solid var(--borde);
-      padding: 30px 0;
+      background: #f8f9fa;
       color: var(--texto);
+    }
+
+    .footer-superior {
+      padding: 65px 0 55px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 45px;
+    }
+
+    .footer-identidad h3 {
+      margin: 0 0 20px;
+      font-size: 23px;
+      color: var(--azul-petroleo);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .footer-identidad p {
+      font-size: 14px;
+      line-height: 1.85;
+      max-width: 310px;
+    }
+
+    .footer-columna h4 {
+      color: var(--azul-petroleo);
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 22px;
+    }
+
+    .footer-columna ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-columna li {
+      margin-bottom: 13px;
+    }
+
+    .footer-columna a {
+      color: var(--azul-petroleo);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-columna a:hover {
+      color: var(--azul-medio);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .footer-inferior {
+      border-top: 1px solid var(--borde);
+    }
+
+    .footer-inferior-contenido {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 25px 0;
       font-size: 13px;
     }
 
-    .pie {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+    .footer-inferior p {
+      margin: 0;
     }
 
-    footer a:hover { color: var(--cobre); }
+    .footer-inferior a {
+      color: var(--azul-petroleo);
+      font-weight: 600;
+    }
+
+    .footer-inferior a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .footer-superior {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+      }
+
+      .rejilla {
+        gap: 18px;
+      }
+    }
 
     @media (max-width: 800px) {
-      .destacado { grid-template-columns: 1fr; }
-      .destacado-visual { min-height: 250px; }
-      .destacado-texto { padding: 35px; }
-      .rejilla { grid-template-columns: 1fr 1fr; }
-      .intro { padding: 65px 0; }
+      .destacado {
+        grid-template-columns: 1fr;
+      }
+
+      .destacado-visual {
+        min-height: 260px;
+      }
+
+      .destacado-texto {
+        padding: 45px 35px;
+      }
+
+      .rejilla {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .intro {
+        padding: 75px 0;
+      }
+
+      .seccion {
+        padding: 75px 0;
+      }
     }
 
     @media (max-width: 550px) {
       nav {
         flex-direction: column;
         justify-content: center;
-        padding: 20px 0;
+        padding: 22px 0;
+        gap: 20px;
       }
-      .menu { gap: 18px; }
-      .rejilla { grid-template-columns: 1fr; }
-      .seccion { padding: 60px 0; }
+
+      .marca {
+        text-align: center;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+
+      .menu a {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .intro {
+        padding: 65px 0;
+      }
+
+      .intro p {
+        font-size: 16px;
+      }
+
+      .destacado-texto {
+        padding: 35px 25px;
+      }
+
+      .rejilla {
+        grid-template-columns: 1fr;
+      }
+
+      .seccion {
+        padding: 60px 0;
+      }
+
+      .footer-superior {
+        grid-template-columns: 1fr;
+        padding: 50px 0;
+        gap: 30px;
+      }
+
+      .footer-inferior-contenido {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .tarjeta,
+      .menu a {
+        transition: none;
+      }
+
+      .tarjeta:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <div class="barra-superior"></div>
+
   <header>
     <nav class="contenedor">
-      <a class="marca" href="#">
-        ANA GUNDERMANN <span>✳</span>
+      <a class="marca" href="#" aria-label="Volver al inicio">
+        <span class="marca-principal">
+          Ana Gundermann
+        </span>
+        <span class="marca-secundaria">
+          Laboratorio matemático
+        </span>
       </a>
+
       <div class="menu">
         <a href="#proyectos">Proyectos</a>
         <a href="#laboratorio">Laboratorio</a>
@@ -283,149 +591,284 @@
     </nav>
   </header>
 
-  <main class="contenedor">
+  <main>
 
-    <section class="intro">
-      <div class="etiqueta">
-        Matemáticas · Programación · Exploración
-      </div>
+    <div class="contenedor">
+      <section class="intro">
+        <div class="etiqueta">
+          Matemáticas · Programación · Exploración
+        </div>
 
-      <h1>
-        Las ideas se entienden mejor
-        cuando puedes explorarlas.
-      </h1>
+        <h1>
+          Las ideas se entienden mejor
+          cuando puedes explorarlas.
+        </h1>
 
-      <p>
-        Un espacio personal donde las matemáticas
-        se convierten en experimentos,
-        visualizaciones y herramientas para
-        comprender problemas.
-      </p>
-    </section>
-
-    <section id="laboratorio" class="destacado">
-      <div class="destacado-visual">
-        <svg viewBox="0 0 300 240"
-             xmlns="http://www.w3.org/2000/svg"
-             aria-label="Curvas matemáticas decorativas">
-          <g fill="none" stroke="#e8b78d"
-             stroke-width="1.3" opacity=".8">
-            <path d="M150 120 C30 10 15 180 150 120
-                     S285 230 150 120"/>
-            <path d="M150 120 C40 25 25 170 150 120
-                     S275 215 150 120"/>
-            <path d="M150 120 C50 40 35 160 150 120
-                     S265 200 150 120"/>
-            <path d="M150 120 C60 55 45 150 150 120
-                     S255 185 150 120"/>
-            <ellipse cx="150" cy="120"
-                     rx="105" ry="52"
-                     transform="rotate(-32 150 120)"/>
-            <ellipse cx="150" cy="120"
-                     rx="105" ry="52"
-                     transform="rotate(32 150 120)"/>
-          </g>
-        </svg>
-      </div>
-
-      <div class="destacado-texto">
-        <div class="etiqueta">Laboratorio matemático</div>
-        <h2>El orden dentro del caos</h2>
         <p>
-          ¿Qué ocurre cuando modificamos las
-          condiciones iniciales de un sistema?
-          Una invitación a explorar los
-          sistemas dinámicos.
+          Un espacio personal donde las matemáticas
+          se convierten en experimentos,
+          visualizaciones y herramientas para
+          comprender problemas.
         </p>
-        <span class="etiqueta">
-          Próximamente →
-        </span>
-      </div>
-    </section>
+
+        <div class="linea-decorativa"></div>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <section id="laboratorio" class="destacado">
+        <div class="destacado-visual">
+
+          <svg viewBox="0 0 300 240"
+               xmlns="http://www.w3.org/2000/svg"
+               role="img"
+               aria-label="Curvas matemáticas decorativas">
+
+            <g fill="none"
+               stroke="#bde9f2"
+               stroke-width="1.4"
+               opacity=".85">
+
+              <path d="M150 120 C30 10 15 180 150 120
+                       S285 230 150 120"/>
+
+              <path d="M150 120 C40 25 25 170 150 120
+                       S275 215 150 120"/>
+
+              <path d="M150 120 C50 40 35 160 150 120
+                       S265 200 150 120"/>
+
+              <path d="M150 120 C60 55 45 150 150 120
+                       S255 185 150 120"/>
+
+              <ellipse cx="150" cy="120"
+                       rx="105" ry="52"
+                       transform="rotate(-32 150 120)"/>
+
+              <ellipse cx="150" cy="120"
+                       rx="105" ry="52"
+                       transform="rotate(32 150 120)"/>
+
+            </g>
+          </svg>
+        </div>
+
+        <div class="destacado-texto">
+          <div class="etiqueta">
+            Laboratorio matemático
+          </div>
+
+          <h2>El orden dentro del caos</h2>
+
+          <p>
+            ¿Qué ocurre cuando modificamos las
+            condiciones iniciales de un sistema?
+            Una invitación a explorar los
+            sistemas dinámicos.
+          </p>
+
+          <span class="estado-proyecto">
+            Próximamente
+          </span>
+        </div>
+      </section>
+    </div>
 
     <section id="proyectos" class="seccion">
-      <h2>Exploraciones recientes</h2>
+      <div class="contenedor">
 
-      <div class="rejilla">
+        <div class="seccion-encabezado">
+          <h2>Exploraciones recientes</h2>
+          <p class="seccion-subtitulo">
+            Proyectos, experimentos y herramientas computacionales.
+          </p>
+        </div>
 
-        <article class="tarjeta">
-          <div class="imagen fractales">∞</div>
-          <div class="contenido">
-            <h3>Geometría infinita</h3>
-            <p>
-              Una exploración visual del conjunto
-              de Mandelbrot y sus estructuras.
-            </p>
-            <span class="categoria">
-              Fractales · Python
-            </span>
-          </div>
-        </article>
+        <div class="rejilla">
 
-        <article class="tarjeta">
-          <div class="imagen datos">✳</div>
-          <div class="contenido">
-            <a href="https://anagundermann.github.io/visualizacion-plotly/"
-   target="_blank"
-   rel="noopener noreferrer">
-            <h3>Historias en los datos</h3>
-            <p>
-              Descubriendo patrones mediante
-              visualizaciones interactivas.
-            </p>
-            <span class="categoria">
-              Visualización · Plotly
-            </span>
+          <article class="tarjeta">
+            <div class="imagen fractales" aria-hidden="true">
+              ∞
+            </div>
+
+            <div class="contenido">
+              <h3>Geometría infinita</h3>
+              <p>
+                Una exploración visual del conjunto
+                de Mandelbrot y sus estructuras.
+              </p>
+
+              <span class="categoria">
+                Fractales · Python · Próximamente
+              </span>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <div class="imagen datos" aria-hidden="true">
+              ✳
+            </div>
+
+            <div class="contenido">
+              <a class="enlace-tarjeta"
+                 href="https://anagundermann.github.io/visualizacion-plotly/"
+                 target="_blank"
+                 rel="noopener noreferrer">
+
+                <h3>Historias en los datos</h3>
+
+                <p>
+                  Descubriendo patrones mediante
+                  visualizaciones interactivas.
+                </p>
+
+                <span class="categoria">
+                  Visualización · Plotly ↗
+                </span>
               </a>
-          </div>
-        </article>
+            </div>
+          </article>
 
-        <article class="tarjeta">
-          <div class="imagen duckdb">⌘</div>
-          <div class="contenido">
-            <a href="https://anagundermann.github.io/tutorial-duckDB/"
-   target="_blank"
-   rel="noopener noreferrer">
-            <h3>Datos a gran escala</h3>
-            <p>
-              Procesamiento eficiente de
-              archivos y consultas con DuckDB.
-            </p>
-            <span class="categoria">
-              Datos · SQL · R
-            </span>
+          <article class="tarjeta">
+            <div class="imagen duckdb" aria-hidden="true">
+              ⌘
+            </div>
+
+            <div class="contenido">
+              <a class="enlace-tarjeta"
+                 href="https://anagundermann.github.io/tutorial-duckDB/"
+                 target="_blank"
+                 rel="noopener noreferrer">
+
+                <h3>Datos a gran escala</h3>
+
+                <p>
+                  Procesamiento eficiente de
+                  archivos y consultas con DuckDB.
+                </p>
+
+                <span class="categoria">
+                  Datos · SQL · R ↗
+                </span>
               </a>
-          </div>
-        </article>
+            </div>
+          </article>
 
+        </div>
       </div>
     </section>
 
-    <section id="sobre-mi" class="sobre-mi">
-      <h2>Sobre este espacio</h2>
-      <p>
-        Soy estudiante de Ingeniería Civil Matemática
-        en la Universidad de Valparaíso.
-        Me interesa explorar la conexión entre
-        matemáticas, programación y problemas reales.
-      </p>
-      <p>
-        Este sitio reúne proyectos, experimentos
-        y aprendizajes desarrollados a lo largo
-        de mi formación.
-      </p>
-    </section>
+    <div class="franja-suave">
+      <section id="sobre-mi" class="sobre-mi contenedor">
+        <h2>Sobre este espacio</h2>
+
+        <p>
+          Soy estudiante de Ingeniería Civil Matemática
+          en la Universidad de Valparaíso.
+          Me interesa explorar la conexión entre
+          matemáticas, programación y problemas reales.
+        </p>
+
+        <p>
+          Este sitio reúne proyectos, experimentos
+          y aprendizajes desarrollados a lo largo
+          de mi formación.
+        </p>
+      </section>
+    </div>
 
   </main>
 
   <footer>
-    <div class="contenedor pie">
-      <span>© 2026 Ana Gundermann</span>
-      <a href="https://github.com/anagundermann"
-         target="_blank" rel="noopener noreferrer">
-        GitHub ↗
-      </a>
+
+    <div class="contenedor footer-superior">
+
+      <div class="footer-identidad">
+        <h3>
+          Laboratorio<br>
+          matemático
+        </h3>
+
+        <p>
+          Un espacio de exploración matemática,
+          análisis de datos y programación,
+          desarrollado por Ana Gundermann.
+        </p>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#laboratorio">Laboratorio</a></li>
+          <li><a href="#sobre-mi">Sobre este espacio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Proyectos</h4>
+        <ul>
+          <li>
+            <a href="https://anagundermann.github.io/visualizacion-plotly/"
+               target="_blank" rel="noopener noreferrer">
+              Visualización con Plotly
+            </a>
+          </li>
+
+          <li>
+            <a href="https://anagundermann.github.io/tutorial-duckDB/"
+               target="_blank" rel="noopener noreferrer">
+              Análisis con DuckDB
+            </a>
+          </li>
+
+          <li>
+            <a href="#proyectos">
+              Geometría infinita
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Enlaces</h4>
+        <ul>
+          <li>
+            <a href="https://github.com/anagundermann"
+               target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.uv.cl/"
+               target="_blank" rel="noopener noreferrer">
+              Universidad de Valparaíso
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              Volver al inicio ↑
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
+
+    <div class="footer-inferior">
+      <div class="contenedor footer-inferior-contenido">
+        <p>
+          © 2026 Ana Gundermann · Laboratorio matemático
+        </p>
+
+        <p>
+          Matemáticas · Programación · Exploración
+        </p>
+      </div>
+    </div>
+
   </footer>
 
 </body>
