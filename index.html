@@ -1,26 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de proyectos matemáticos y computacionales de Ana Gundermann.">
-  <meta name="theme-color" content="#081e42">
+  <meta name="description"
+    content="Laboratorio matemático de Ana Gundermann. Biblioteca de proyectos de matemáticas, programación y análisis de datos.">
+  <meta name="theme-color" content="#005C74">
   <link rel="icon" type="image/png" href="favicon.png">
+
   <title>Ana Gundermann | Laboratorio matemático</title>
 
   <style>
     :root {
-      --azul-marino: #081e42;
-      --azul-petroleo: #005b76;
-      --azul-medio: #087b9b;
-      --azul-claro: #dceef3;
-      --fondo: #ffffff;
-      --fondo-suave: #f5f7f9;
-      --borde: #dce4e8;
-      --texto: #445565;
-      --titulo: #153d53;
-      --blanco: #ffffff;
+      --petroleo: #005C74;
+      --petroleo-oscuro: #00475D;
+      --amarillo: #F6BC60;
+      --magenta: #A13265;
+      --blanco: #FFFFFF;
+      --fondo: #F8F8F7;
+      --celeste: #E4F0F3;
+      --borde: #D5E2E6;
+      --titulo: #26383F;
+      --texto: #647078;
     }
 
     * {
@@ -34,9 +36,9 @@
     body {
       margin: 0;
       background: var(--fondo);
-      color: var(--titulo);
       font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.65;
+      color: var(--titulo);
+      line-height: 1.6;
     }
 
     a {
@@ -44,370 +46,333 @@
       text-decoration: none;
     }
 
-    a:focus-visible {
-      outline: 3px solid var(--azul-medio);
+    button {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--amarillo);
       outline-offset: 4px;
     }
 
     .contenedor {
-      width: min(1180px, 92%);
+      width: min(1120px, 92%);
       margin: 0 auto;
     }
 
     section[id] {
-      scroll-margin-top: 40px;
+      scroll-margin-top: 30px;
     }
 
     /* ENCABEZADO */
 
-    .barra-superior {
-      height: 12px;
-      background: var(--azul-marino);
+
+    .cabecera {
+      width: min(1120px, 92%);
+      margin: 24px auto 0;
+      background: var(--petroleo);
+      color: var(--blanco);
+      padding: 27px 0 46px;
+      border-radius: 14px;
     }
 
-    header {
-      background: var(--blanco);
-      border-bottom: 1px solid var(--borde);
+
+    .cabecera>.contenedor {
+      width: 100%;
+      padding: 0 35px;
     }
 
-    nav {
-      min-height: 94px;
+
+
+    .barra-navegacion {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      align-items: center;
+      gap: 20px;
     }
 
     .marca {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.25;
-      color: var(--azul-petroleo);
-    }
-
-    .marca-principal {
       font-size: 22px;
-      font-weight: 750;
-      letter-spacing: -.7px;
-    }
-
-    .marca-secundaria {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      margin-top: 5px;
+      font-weight: 700;
+      letter-spacing: .2px;
     }
 
     .menu {
       display: flex;
+      gap: 28px;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 0;
     }
 
     .menu a {
-      padding: 12px 25px;
-      border-left: 1px solid var(--borde);
+      color: var(--blanco);
       font-size: 14px;
-      font-weight: 600;
-      color: var(--azul-petroleo);
-      transition: color .2s, background .2s;
-    }
-
-    .menu a:last-child {
-      border-right: 1px solid var(--borde);
+      font-weight: 500;
+      transition: color .2s;
     }
 
     .menu a:hover {
-      background: var(--fondo-suave);
-      color: var(--azul-medio);
+      color: var(--amarillo);
     }
 
-    /* INTRODUCCIÓN */
-
-    .intro {
-      padding: 100px 0 90px;
-      max-width: 950px;
-    }
-
-    .etiqueta {
-      color: var(--azul-medio);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-family: "Segoe UI", Arial, sans-serif;
-      font-size: clamp(38px, 5vw, 64px);
-      font-weight: 600;
-      line-height: 1.16;
-      letter-spacing: -1.8px;
-      color: var(--azul-petroleo);
-      margin: 24px 0 28px;
-    }
-
-    .intro p {
-      max-width: 720px;
-      font-size: 19px;
-      color: var(--texto);
-      line-height: 1.85;
-    }
-
-    .linea-decorativa {
-      width: 85px;
-      height: 4px;
-      background: var(--azul-medio);
-      margin-top: 34px;
-    }
-
-    /* PROYECTO DESTACADO */
-
-    .destacado {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 380px;
-      overflow: hidden;
-      background: var(--azul-petroleo);
-    }
-
-    .destacado-visual {
-      display: grid;
-      place-items: center;
-      padding: 45px;
-      background:
-        radial-gradient(
-          ellipse at 45% 50%,
-          #117c96 0%,
-          #005b76 55%,
-          #07364d 100%
-        );
-    }
-
-    .destacado-visual svg {
-      width: 100%;
-      max-width: 380px;
-    }
-
-    .destacado-texto {
-      padding: 60px 55px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--azul-petroleo);
+    .menu-toggle {
+      display: none;
+      background: transparent;
       color: var(--blanco);
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 6px;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1.3;
     }
 
-    .destacado .etiqueta {
-      color: #a9dbe7;
+    .hero {
+      padding-top: 57px;
     }
 
-    .destacado-texto h2 {
-      font-size: clamp(30px, 3vw, 41px);
-      font-weight: 500;
+    .hero h1 {
+      color: var(--amarillo);
+      font-size: clamp(33px, 4vw, 49px);
+      font-weight: 600;
+      letter-spacing: -1px;
       line-height: 1.2;
-      margin: 20px 0;
+      margin: 0 0 13px;
+    }
+
+    .hero p {
+      font-size: 18px;
       color: var(--blanco);
-    }
-
-    .destacado-texto p {
-      color: #d9edf2;
-      font-size: 16px;
-      line-height: 1.85;
-      margin-bottom: 30px;
-    }
-
-    .estado-proyecto {
-      display: inline-block;
-      align-self: flex-start;
-      border: 1px solid #a9dbe7;
-      color: #d9edf2;
-      padding: 9px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* SECCIONES */
-
-    .seccion {
-      padding: 100px 0;
-    }
-
-    .seccion-encabezado {
-      margin-bottom: 40px;
-      border-bottom: 1px solid var(--borde);
-      padding-bottom: 22px;
-    }
-
-    .seccion h2,
-    .sobre-mi h2 {
-      color: var(--azul-petroleo);
-      font-size: clamp(28px, 3vw, 36px);
-      font-weight: 600;
-      letter-spacing: -.6px;
       margin: 0;
     }
 
-    .seccion-subtitulo {
-      margin: 10px 0 0;
-      font-size: 15px;
+    .linea-magenta {
+      width: 165px;
+      height: 7px;
+      background: var(--magenta);
+      margin-top: 30px;
+    }
+
+    /* BIBLIOTECA */
+
+    .biblioteca {
+      padding: 50px 0 85px;
+    }
+
+    .encabezado-seccion {
+      margin-bottom: 30px;
+    }
+
+    .encabezado-seccion h2 {
+      color: var(--petroleo);
+      font-size: 27px;
+      font-weight: 650;
+      margin: 0 0 6px;
+    }
+
+    .encabezado-seccion p {
       color: var(--texto);
+      margin: 0;
+      font-size: 15px;
     }
 
-    /* TARJETAS */
+    /* FILTROS */
 
-    .rejilla {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 26px;
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 24px;
     }
 
-    .tarjeta {
+    .filtro {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 25px;
+      background: var(--celeste);
+      color: var(--petroleo);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .filtro:hover {
+      background: #CFE4EB;
+    }
+
+    .filtro.activo {
+      background: var(--magenta);
+      color: var(--blanco);
+    }
+
+    /* TARJETAS HORIZONTALES */
+
+    .lista-proyectos {
       display: flex;
       flex-direction: column;
+      gap: 15px;
+    }
+
+    .proyecto {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 18px;
       background: var(--blanco);
       border: 1px solid var(--borde);
-      overflow: hidden;
-      transition: transform .25s, box-shadow .25s;
+      border-radius: 12px;
+      min-height: 132px;
+      transition:
+        border-color .2s,
+        box-shadow .2s,
+        transform .2s;
     }
 
-    .tarjeta:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 30px rgba(0, 48, 73, .10);
+    .proyecto:hover {
+      border-color: var(--petroleo);
+      box-shadow: 0 7px 23px rgba(0, 92, 116, .09);
+      transform: translateY(-2px);
     }
 
-    .imagen {
-      height: 190px;
-      display: grid;
-      place-items: center;
-      font-family: Georgia, serif;
-      font-size: 72px;
+    .proyecto[hidden] {
+      display: none;
     }
 
-    .fractales {
-      background:
-        radial-gradient(
-          circle,
-          #3a9bb5,
-          #075e7a 55%,
-          #082d49
-        );
-      color: #e1f5f9;
+    .proyecto-enlace {
+      cursor: pointer;
     }
 
-    .datos {
-      background: #e5f1f5;
-      color: var(--azul-petroleo);
-    }
-
-    .duckdb {
-      background: #d8e9ee;
-      color: var(--azul-petroleo);
-    }
-
-    .contenido {
-      padding: 28px;
+    .icono-proyecto {
+      width: 98px;
+      height: 98px;
+      min-width: 98px;
+      background: var(--petroleo);
+      border-radius: 9px;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--amarillo);
+    }
+
+    .icono-proyecto svg {
+      width: 39px;
+      height: 39px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .informacion {
       flex: 1;
-    }
-
-    .contenido h3 {
-      font-size: 21px;
-      font-weight: 650;
-      color: var(--azul-petroleo);
-      margin: 0 0 12px;
-    }
-
-    .contenido p {
-      font-size: 14px;
-      color: var(--texto);
-      line-height: 1.8;
-      margin: 0 0 26px;
+      min-width: 0;
     }
 
     .categoria {
-      display: block;
-      margin-top: auto;
-      padding-top: 15px;
-      border-top: 1px solid var(--borde);
-      color: var(--azul-medio);
+      color: var(--magenta);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
+      text-transform: uppercase;
       letter-spacing: .3px;
+      margin-bottom: 5px;
     }
 
-    .enlace-tarjeta {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+    .informacion h3 {
+      color: var(--titulo);
+      font-size: 22px;
+      font-weight: 650;
+      line-height: 1.3;
+      margin: 0 0 6px;
     }
 
-    .enlace-tarjeta:hover h3 {
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .informacion p {
+      color: var(--texto);
+      font-size: 15px;
+      margin: 0;
     }
 
-    /* SOBRE MÍ */
-
-    .franja-suave {
-      background: var(--fondo-suave);
-      border-top: 1px solid var(--borde);
-      border-bottom: 1px solid var(--borde);
+    .flecha {
+      color: var(--petroleo);
+      font-size: 28px;
+      font-weight: 500;
+      padding: 0 10px;
     }
+
+    .pendiente {
+      font-size: 13px;
+      color: var(--magenta);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .sin-resultados {
+      color: var(--texto);
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    /* SOBRE EL LABORATORIO */
 
     .sobre-mi {
-      padding: 85px 0 95px;
+      background: var(--blanco);
+      border-top: 1px solid var(--borde);
+      padding: 70px 0 80px;
     }
 
     .sobre-mi h2 {
-      margin-bottom: 25px;
+      color: var(--petroleo);
+      font-size: 30px;
+      margin: 0 0 20px;
     }
 
     .sobre-mi p {
       color: var(--texto);
-      max-width: 800px;
+      max-width: 790px;
       font-size: 16px;
       line-height: 1.9;
     }
 
-    /* FOOTER INSTITUCIONAL */
-
-    footer {
-      background: #f8f9fa;
-      color: var(--texto);
+    .sobre-mi p:last-child {
+      margin-bottom: 0;
     }
 
-    .footer-superior {
-      padding: 65px 0 55px;
+    /* FOOTER */
+
+    .footer {
+      background: #F3F5F5;
+      border-top: 1px solid var(--borde);
+    }
+
+    .footer-principal {
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 45px;
+      gap: 40px;
+      padding: 65px 0 60px;
     }
 
-    .footer-identidad h3 {
-      margin: 0 0 20px;
-      font-size: 23px;
-      color: var(--azul-petroleo);
-      font-weight: 700;
+    .footer-marca h3 {
+      color: var(--petroleo);
+      font-size: 24px;
       line-height: 1.3;
+      margin: 0 0 17px;
     }
 
-    .footer-identidad p {
+    .footer-marca p {
+      color: var(--texto);
       font-size: 14px;
+      max-width: 300px;
       line-height: 1.85;
-      max-width: 310px;
+      margin: 0;
     }
 
     .footer-columna h4 {
-      color: var(--azul-petroleo);
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0 0 22px;
+      color: var(--petroleo);
+      font-size: 17px;
+      margin: 0 0 20px;
     }
 
     .footer-columna ul {
@@ -421,133 +386,139 @@
     }
 
     .footer-columna a {
-      color: var(--azul-petroleo);
       font-size: 14px;
-      line-height: 1.6;
+      color: var(--petroleo);
     }
 
     .footer-columna a:hover {
-      color: var(--azul-medio);
+      color: var(--magenta);
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
     .footer-inferior {
       border-top: 1px solid var(--borde);
+      padding: 24px 0;
     }
 
-    .footer-inferior-contenido {
+    .footer-inferior .contenedor {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 25px 0;
+      color: var(--texto);
       font-size: 13px;
     }
 
-    .footer-inferior p {
-      margin: 0;
-    }
-
-    .footer-inferior a {
-      color: var(--azul-petroleo);
-      font-weight: 600;
-    }
-
-    .footer-inferior a:hover {
-      text-decoration: underline;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1000px) {
-      .footer-superior {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 35px;
-      }
-
-      .rejilla {
-        gap: 18px;
-      }
-    }
+    /* PANTALLAS PEQUEÑAS */
 
     @media (max-width: 800px) {
-      .destacado {
-        grid-template-columns: 1fr;
-      }
-
-      .destacado-visual {
-        min-height: 260px;
-      }
-
-      .destacado-texto {
-        padding: 45px 35px;
-      }
-
-      .rejilla {
+      .footer-principal {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .intro {
-        padding: 75px 0;
+      .hero {
+        padding-top: 40px;
       }
 
-      .seccion {
-        padding: 75px 0;
+      .biblioteca {
+        padding: 45px 0 65px;
       }
     }
 
-    @media (max-width: 550px) {
-      nav {
-        flex-direction: column;
-        justify-content: center;
-        padding: 22px 0;
-        gap: 20px;
+    @media (max-width: 600px) {
+
+      .cabecera {
+        width: 94%;
+        margin-top: 12px;
+        padding: 20px 0 38px;
+        border-radius: 10px;
       }
 
+      .cabecera>.contenedor {
+        padding: 0 20px;
+      }
+
+
       .marca {
-        text-align: center;
+        font-size: 17px;
+      }
+
+      .menu-toggle {
+        display: block;
       }
 
       .menu {
-        justify-content: center;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-top: 20px;
+        width: 100%;
       }
 
-      .menu a {
-        padding: 9px 12px;
-        font-size: 12px;
+      .menu.abierto {
+        display: flex;
       }
 
-      .intro {
-        padding: 65px 0;
+      .barra-navegacion {
+        flex-wrap: wrap;
       }
 
-      .intro p {
-        font-size: 16px;
+      .hero {
+        padding-top: 40px;
       }
 
-      .destacado-texto {
-        padding: 35px 25px;
+      .hero h1 {
+        font-size: 33px;
       }
 
-      .rejilla {
+      .hero p {
+        font-size: 15px;
+      }
+
+      .proyecto {
+        gap: 14px;
+        padding: 13px;
+        min-height: 110px;
+      }
+
+      .icono-proyecto {
+        width: 65px;
+        min-width: 65px;
+        height: 65px;
+      }
+
+      .icono-proyecto svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .informacion h3 {
+        font-size: 17px;
+      }
+
+      .informacion p {
+        font-size: 13px;
+      }
+
+      .categoria {
+        font-size: 10px;
+      }
+
+      .flecha {
+        font-size: 21px;
+        padding: 0;
+      }
+
+      .footer-principal {
         grid-template-columns: 1fr;
-      }
-
-      .seccion {
-        padding: 60px 0;
-      }
-
-      .footer-superior {
-        grid-template-columns: 1fr;
-        padding: 50px 0;
+        padding: 45px 0;
         gap: 30px;
       }
 
-      .footer-inferior-contenido {
+      .footer-inferior .contenedor {
         flex-direction: column;
-        align-items: flex-start;
       }
     }
 
@@ -556,12 +527,11 @@
         scroll-behavior: auto;
       }
 
-      .tarjeta,
-      .menu a {
+      .proyecto {
         transition: none;
       }
 
-      .tarjeta:hover {
+      .proyecto:hover {
         transform: none;
       }
     }
@@ -570,197 +540,242 @@
 
 <body>
 
-  <div class="barra-superior"></div>
+  <header class="cabecera" id="inicio">
+    <div class="contenedor">
 
-  <header>
-    <nav class="contenedor">
-      <a class="marca" href="#" aria-label="Volver al inicio">
-        <span class="marca-principal">
-          Ana Gundermann
-        </span>
-        <span class="marca-secundaria">
-          Laboratorio matemático
-        </span>
-      </a>
+      <div class="barra-navegacion">
+        <a href="#inicio" class="marca">
+          ANA GUNDERMANN
+        </a>
 
-      <div class="menu">
-        <a href="#proyectos">Proyectos</a>
-        <a href="#laboratorio">Laboratorio</a>
-        <a href="#sobre-mi">Sobre mí</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="menu"
+          aria-expanded="false">
+          ☰
+        </button>
+
+        <nav class="menu" id="menu" aria-label="Navegación principal">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="https://github.com/anagundermann" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
       </div>
-    </nav>
+
+      <div class="hero">
+        <h1>Biblioteca de proyectos</h1>
+        <p>Matemáticas, datos y computación</p>
+        <div class="linea-magenta"></div>
+      </div>
+
+    </div>
   </header>
 
   <main>
 
-    <div class="contenedor">
-      <section class="intro">
-        <div class="etiqueta">
-          Matemáticas · Programación · Exploración
-        </div>
-
-        <h1>
-          Las ideas se entienden mejor
-          cuando puedes explorarlas.
-        </h1>
-
-        <p>
-          Un espacio personal donde las matemáticas
-          se convierten en experimentos,
-          visualizaciones y herramientas para
-          comprender problemas.
-        </p>
-
-        <div class="linea-decorativa"></div>
-      </section>
-    </div>
-
-    <div class="contenedor">
-      <section id="laboratorio" class="destacado">
-        <div class="destacado-visual">
-
-          <svg viewBox="0 0 300 240"
-               xmlns="http://www.w3.org/2000/svg"
-               role="img"
-               aria-label="Curvas matemáticas decorativas">
-
-            <g fill="none"
-               stroke="#bde9f2"
-               stroke-width="1.4"
-               opacity=".85">
-
-              <path d="M150 120 C30 10 15 180 150 120
-                       S285 230 150 120"/>
-
-              <path d="M150 120 C40 25 25 170 150 120
-                       S275 215 150 120"/>
-
-              <path d="M150 120 C50 40 35 160 150 120
-                       S265 200 150 120"/>
-
-              <path d="M150 120 C60 55 45 150 150 120
-                       S255 185 150 120"/>
-
-              <ellipse cx="150" cy="120"
-                       rx="105" ry="52"
-                       transform="rotate(-32 150 120)"/>
-
-              <ellipse cx="150" cy="120"
-                       rx="105" ry="52"
-                       transform="rotate(32 150 120)"/>
-
-            </g>
-          </svg>
-        </div>
-
-        <div class="destacado-texto">
-          <div class="etiqueta">
-            Laboratorio matemático
-          </div>
-
-          <h2>El orden dentro del caos</h2>
-
-          <p>
-            ¿Qué ocurre cuando modificamos las
-            condiciones iniciales de un sistema?
-            Una invitación a explorar los
-            sistemas dinámicos.
-          </p>
-
-          <span class="estado-proyecto">
-            Próximamente
-          </span>
-        </div>
-      </section>
-    </div>
-
-    <section id="proyectos" class="seccion">
+    <section class="biblioteca" id="proyectos">
       <div class="contenedor">
 
-        <div class="seccion-encabezado">
-          <h2>Exploraciones recientes</h2>
-          <p class="seccion-subtitulo">
-            Proyectos, experimentos y herramientas computacionales.
+        <div class="encabezado-seccion">
+          <h2>Proyectos y experimentos</h2>
+          <p>
+            Exploraciones matemáticas,
+            visualizaciones y herramientas computacionales.
           </p>
         </div>
 
-        <div class="rejilla">
+        <div class="filtros" role="group" aria-label="Filtrar proyectos">
+          <button type="button" class="filtro activo" data-filtro="todos" aria-pressed="true">
+            Todos
+          </button>
 
-          <article class="tarjeta">
-            <div class="imagen fractales" aria-hidden="true">
-              ∞
+          <button type="button" class="filtro" data-filtro="visualizacion" aria-pressed="false">
+            Visualización
+          </button>
+
+          <button type="button" class="filtro" data-filtro="programacion" aria-pressed="false">
+            Programación
+          </button>
+
+          <button type="button" class="filtro" data-filtro="matematicas" aria-pressed="false">
+            Matemáticas
+          </button>
+        </div>
+
+        <div class="lista-proyectos">
+
+          <!-- PROYECTO PLOTLY -->
+
+          <a class="proyecto proyecto-enlace" data-categorias="visualizacion programacion"
+            href="https://anagundermann.github.io/visualizacion-plotly/" target="_blank" rel="noopener noreferrer">
+
+            <div class="icono-proyecto" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <path d="M7 6 V33 H34"></path>
+                <circle cx="15" cy="25" r="1.6"></circle>
+                <circle cx="19" cy="15" r="1.6"></circle>
+                <circle cx="26" cy="20" r="1.6"></circle>
+                <circle cx="31" cy="11" r="1.6"></circle>
+              </svg>
             </div>
 
-            <div class="contenido">
+            <div class="informacion">
+              <div class="categoria">
+                Visualización · Plotly
+              </div>
+
+              <h3>Historias en los datos</h3>
+
+              <p>
+                Descubriendo patrones mediante
+                visualizaciones interactivas.
+              </p>
+            </div>
+
+            <span class="flecha" aria-hidden="true">↗</span>
+          </a>
+
+          <!-- PROYECTO DUCKDB -->
+
+          <a class="proyecto proyecto-enlace" data-categorias="programacion"
+            href="https://anagundermann.github.io/tutorial-duckDB/" target="_blank" rel="noopener noreferrer">
+
+            <div class="icono-proyecto" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <ellipse cx="20" cy="9" rx="11" ry="5"></ellipse>
+                <path d="M9 9 V30"></path>
+                <path d="M31 9 V30"></path>
+                <path d="M9 19 C9 26 31 26 31 19"></path>
+                <path d="M9 30 C9 37 31 37 31 30"></path>
+              </svg>
+            </div>
+
+            <div class="informacion">
+              <div class="categoria">
+                Datos · SQL · R
+              </div>
+
+              <h3>Datos a gran escala</h3>
+
+              <p>
+                Procesamiento eficiente de archivos
+                y consultas con DuckDB.
+              </p>
+            </div>
+
+            <span class="flecha" aria-hidden="true">↗</span>
+          </a>
+
+
+          <!-- PROYECTO MÉTODOS NUMÉRICOS -->
+
+          <a class="proyecto proyecto-enlace" data-categorias="matematicas programacion"
+            href="https://anagundermann.github.io/metodos-numericos/" target="_blank" rel="noopener noreferrer">
+
+            <div class="icono-proyecto" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <path d="M5 33 H35"></path>
+                <path d="M8 36 V5"></path>
+                <path d="M9 28 L15 22 L21 25 L28 13 L34 9"></path>
+                <circle cx="15" cy="22" r="2"></circle>
+                <circle cx="21" cy="25" r="2"></circle>
+                <circle cx="28" cy="13" r="2"></circle>
+              </svg>
+            </div>
+
+            <div class="informacion">
+              <div class="categoria">
+                Matemáticas · Python · Métodos numéricos
+              </div>
+
+              <h3>Métodos numéricos</h3>
+
+              <p>
+                Exploración computacional de métodos
+                numéricos y aproximación de soluciones.
+              </p>
+            </div>
+
+            <span class="flecha" aria-hidden="true">↗</span>
+          </a>
+
+
+          <!-- PROYECTO MANDELBROT -->
+
+          <article class="proyecto" data-categorias="matematicas programacion">
+
+            <div class="icono-proyecto" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <path d="M21 34
+                         C9 35 5 24 10 15
+                         C15 5 29 5 32 15
+                         C34 22 27 28 21 23
+                         C17 20 19 14 24 15
+                         C28 16 28 20 25 21"></path>
+                <circle cx="11" cy="31" r="2"></circle>
+              </svg>
+            </div>
+
+            <div class="informacion">
+              <div class="categoria">
+                Matemáticas · Python
+              </div>
+
               <h3>Geometría infinita</h3>
+
               <p>
                 Una exploración visual del conjunto
                 de Mandelbrot y sus estructuras.
               </p>
-
-              <span class="categoria">
-                Fractales · Python · Próximamente
-              </span>
             </div>
+
+            <span class="pendiente">
+              Próximamente
+            </span>
           </article>
 
-          <article class="tarjeta">
-            <div class="imagen datos" aria-hidden="true">
-              ✳
+          <!-- PROYECTO SISTEMAS DINÁMICOS -->
+
+          <article class="proyecto" data-categorias="matematicas programacion">
+
+            <div class="icono-proyecto" aria-hidden="true">
+              <svg viewBox="0 0 40 40">
+                <path d="M5 22
+                         C10 22 10 8 15 8
+                         C20 8 20 32 25 32
+                         C30 32 30 18 35 18"></path>
+                <path d="M30 13 L35 18 L30 23"></path>
+              </svg>
             </div>
 
-            <div class="contenido">
-              <a class="enlace-tarjeta"
-                 href="https://anagundermann.github.io/visualizacion-plotly/"
-                 target="_blank"
-                 rel="noopener noreferrer">
+            <div class="informacion">
+              <div class="categoria">
+                Matemáticas · Sistemas dinámicos
+              </div>
 
-                <h3>Historias en los datos</h3>
+              <h3>El orden dentro del caos</h3>
 
-                <p>
-                  Descubriendo patrones mediante
-                  visualizaciones interactivas.
-                </p>
-
-                <span class="categoria">
-                  Visualización · Plotly ↗
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <article class="tarjeta">
-            <div class="imagen duckdb" aria-hidden="true">
-              ⌘
+              <p>
+                Explorando cómo las condiciones iniciales
+                influyen en la evolución de un sistema.
+              </p>
             </div>
 
-            <div class="contenido">
-              <a class="enlace-tarjeta"
-                 href="https://anagundermann.github.io/tutorial-duckDB/"
-                 target="_blank"
-                 rel="noopener noreferrer">
-
-                <h3>Datos a gran escala</h3>
-
-                <p>
-                  Procesamiento eficiente de
-                  archivos y consultas con DuckDB.
-                </p>
-
-                <span class="categoria">
-                  Datos · SQL · R ↗
-                </span>
-              </a>
-            </div>
+            <span class="pendiente">
+              Próximamente
+            </span>
           </article>
 
         </div>
+
+        <p class="sin-resultados" id="sin-resultados" hidden>
+          No hay proyectos en esta categoría.
+        </p>
+
       </div>
     </section>
 
-    <div class="franja-suave">
-      <section id="sobre-mi" class="sobre-mi contenedor">
-        <h2>Sobre este espacio</h2>
+    <section class="sobre-mi" id="sobre-mi">
+      <div class="contenedor">
+        <h2>Sobre este laboratorio</h2>
 
         <p>
           Soy estudiante de Ingeniería Civil Matemática
@@ -770,62 +785,56 @@
         </p>
 
         <p>
-          Este sitio reúne proyectos, experimentos
+          Este laboratorio reúne proyectos, experimentos
           y aprendizajes desarrollados a lo largo
-          de mi formación.
+          de mi formación, con especial interés en
+          el análisis de datos, los métodos computacionales
+          y la visualización matemática.
         </p>
-      </section>
-    </div>
+      </div>
+    </section>
 
   </main>
 
-  <footer>
+  <footer class="footer">
 
-    <div class="contenedor footer-superior">
+    <div class="contenedor footer-principal">
 
-      <div class="footer-identidad">
-        <h3>
-          Laboratorio<br>
-          matemático
-        </h3>
-
+      <div class="footer-marca">
+        <h3>Laboratorio matemático</h3>
         <p>
-          Un espacio de exploración matemática,
-          análisis de datos y programación,
-          desarrollado por Ana Gundermann.
+          Un espacio personal para explorar
+          matemáticas, datos y programación
+          a través de proyectos y experimentos.
         </p>
       </div>
 
       <div class="footer-columna">
         <h4>Explorar</h4>
         <ul>
+          <li><a href="#inicio">Inicio</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#laboratorio">Laboratorio</a></li>
-          <li><a href="#sobre-mi">Sobre este espacio</a></li>
+          <li><a href="#sobre-mi">Sobre el laboratorio</a></li>
         </ul>
       </div>
 
       <div class="footer-columna">
-        <h4>Proyectos</h4>
+        <h4>Publicaciones</h4>
         <ul>
           <li>
-            <a href="https://anagundermann.github.io/visualizacion-plotly/"
-               target="_blank" rel="noopener noreferrer">
+            <a href="https://anagundermann.github.io/visualizacion-plotly/" target="_blank" rel="noopener noreferrer">
               Visualización con Plotly
             </a>
           </li>
 
           <li>
-            <a href="https://anagundermann.github.io/tutorial-duckDB/"
-               target="_blank" rel="noopener noreferrer">
+            <a href="https://anagundermann.github.io/tutorial-duckDB/" target="_blank" rel="noopener noreferrer">
               Análisis con DuckDB
             </a>
           </li>
 
           <li>
-            <a href="#proyectos">
-              Geometría infinita
-            </a>
+            <a href="#proyectos">Todos los proyectos</a>
           </li>
         </ul>
       </div>
@@ -834,23 +843,19 @@
         <h4>Enlaces</h4>
         <ul>
           <li>
-            <a href="https://github.com/anagundermann"
-               target="_blank" rel="noopener noreferrer">
-              GitHub
+            <a href="https://github.com/anagundermann" target="_blank" rel="noopener noreferrer">
+              GitHub ↗
             </a>
           </li>
 
           <li>
-            <a href="https://www.uv.cl/"
-               target="_blank" rel="noopener noreferrer">
-              Universidad de Valparaíso
+            <a href="https://www.uv.cl/" target="_blank" rel="noopener noreferrer">
+              Universidad de Valparaíso ↗
             </a>
           </li>
 
           <li>
-            <a href="#">
-              Volver al inicio ↑
-            </a>
+            <a href="#inicio">Volver arriba ↑</a>
           </li>
         </ul>
       </div>
@@ -858,18 +863,67 @@
     </div>
 
     <div class="footer-inferior">
-      <div class="contenedor footer-inferior-contenido">
-        <p>
-          © 2026 Ana Gundermann · Laboratorio matemático
-        </p>
-
-        <p>
-          Matemáticas · Programación · Exploración
-        </p>
+      <div class="contenedor">
+        <span>© 2026 Ana Gundermann</span>
+        <span>Matemáticas · Programación · Exploración</span>
       </div>
     </div>
 
   </footer>
 
+  <script>
+    const filtros = document.querySelectorAll(".filtro");
+    const proyectos = document.querySelectorAll(".proyecto");
+    const mensajeVacio = document.getElementById("sin-resultados");
+
+    filtros.forEach(boton => {
+      boton.addEventListener("click", () => {
+        const categoria = boton.dataset.filtro;
+        let visibles = 0;
+
+        filtros.forEach(filtro => {
+          const activo = filtro === boton;
+          filtro.classList.toggle("activo", activo);
+          filtro.setAttribute("aria-pressed", String(activo));
+        });
+
+        proyectos.forEach(proyecto => {
+          const categorias = proyecto.dataset.categorias.split(" ");
+          const mostrar =
+            categoria === "todos" || categorias.includes(categoria);
+
+          proyecto.hidden = !mostrar;
+
+          if (mostrar) {
+            visibles++;
+          }
+        });
+
+        mensajeVacio.hidden = visibles > 0;
+      });
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      const abierto = menu.classList.toggle("abierto");
+      menuToggle.setAttribute("aria-expanded", String(abierto));
+      menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+      );
+    });
+
+    menu.querySelectorAll("a").forEach(enlace => {
+      enlace.addEventListener("click", () => {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+      });
+    });
+  </script>
+
 </body>
+
 </html>
